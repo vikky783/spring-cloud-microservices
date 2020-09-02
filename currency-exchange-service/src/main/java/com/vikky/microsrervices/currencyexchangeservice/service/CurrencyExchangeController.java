@@ -15,12 +15,17 @@ public class CurrencyExchangeController {
 
   @Autowired private ExchangeValueRepository exchangeValueRepository;
 
-  @Autowired private Environment environment;
+  @Autowired
+  private Environment environment;
 
   @GetMapping("/currency-exchange/from/{from}/to/{to}")
   public ExchangeValue retrieveExchangeValue(@PathVariable String from, @PathVariable String to) {
     int portNumber =
         Integer.parseInt(Objects.requireNonNull(environment.getProperty("local.server.port")));
-    return exchangeValueRepository.findByFromAndTo(from, to);
+
+    ExchangeValue exchangeValue = exchangeValueRepository.findByFromAndTo(from, to);
+    exchangeValue.setPort(portNumber);
+    return exchangeValue;
+
   }
 }

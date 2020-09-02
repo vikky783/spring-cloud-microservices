@@ -1,0 +1,9 @@
+{
+  "properties": [
+
+    {
+      "name": "currency-exchange-services.ribbon.istOfServers",
+      "type": "java.lang.String",
+      "description": "Description for currency-exchange-services.ribbon.istOfServers."
+    }
+  ] }
